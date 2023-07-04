@@ -18,7 +18,7 @@
 
     <main class="container">
 
-        <h1>confirmación  de una baja de destino</h1>
+        <h1>baja de un destino</h1>
 
         <div class="alert alert-<?= $css ?> col-8 mx-auto">
             <?= $mensaje ?> <a href="adminDestinos.php" class="btn btn-light">Volver a panel</a>
