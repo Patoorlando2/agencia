@@ -80,17 +80,24 @@
 
         public function modificarDestino()
         {
+            $destID = $_POST['destID'];
+
 			$destNombre = $_POST['destNombre'];
-        	$destID = $_POST['destID'];
-            //$destPrecio = $_POST['destPrecio'];
-            //$destAsientos = $_POST['destAsientos'];
-            //$destDisponibles = $_POST['destDisponibles'];
+            $destPrecio = $_POST['destPrecio'];
+            $destAsientos = $_POST['destAsientos'];
+            $destDisponibles = $_POST['destDisponibles'];
 			
 			$link = Conexion::conectar();
-			$sql = "UPDATE destinos SET destNombre = :destNombre AND  WHERE destID = :destID";
+			$sql = "UPDATE destinos SET 
+            destNombre = :destNombre, 
+            destPrecio = :destPrecio, 
+            regID = :regID, 
+            destAsientos = :destAsientos,
+            destDisponibles = :destDisponibles
+            WHERE destID = :destID ";
 			$stmt = $link->prepare($sql);
+            $stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
 			$stmt->bindParam(':destNombre', $destNombre, PDO::PARAM_STR);
-			$stmt->bindParam(':destID', $destID, PDO::PARAM_INT);
             $stmt->bindParam(':regID', $regID, PDO::PARAM_INT);
             $stmt->bindParam(':destPrecio', $destPrecio, PDO::PARAM_INT);
             $stmt->bindParam(':destAsientos', $destAsientos, PDO::PARAM_INT);
@@ -109,9 +116,21 @@
         }
         public function eliminarDestino()
         {
+            $destID = $_POST['destID'];
+            $destNombre = $_POST['destNombre'];
 			$link = Conexion::conectar();
-			$sql = "DELETE ";
+			$sql = "DELETE FROM destinos WHERE destID = :destID";
+            $stmt = $link->prepare($sql);
+            $stmt-> bindParam(':destID',$destID, PDO::PARAM_INT);
+            if ($stmt->execute()){
+                //registramos los atributos
+                $this->setDestID($destID);
+                $this->setDestNombre($destNombre);
+                return $this;
+            }
+           return false;
         }
+
 
         // create Setter & Getter's atribute
         
