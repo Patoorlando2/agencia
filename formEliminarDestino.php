@@ -18,17 +18,16 @@
         <div class="alert bg-light border border-white shadow round col-8 mx-auto p-4">
             <form action="eliminarDestino.php" method="post">
                 <span>Se eliminará el destino <?= $Destino->getdestNombre();?></span><br>
-                Región: <?=$destino::getRegNombre()?> <br>
+                <!--Región:-->  <!--$destino::getRegNombre()<br>-->
                 Precio: $<?=$Destino->getDestPrecio()?> <br>
 
-                <input type="hidden" name="destNombre" value="<?= $destino->getDestNombre() ?>">
-                <input type="hidden" name="destID" value="<?= $destino->getDestID() ?>">
+                <!--<input type="hidden" name="destNombre" value=" /*$destino->getDestNombre()*/">
+                <input type="hidden" name="destID" value=" /*$destino->getDestID()*/ ">-->
 
                 <button class="btn btn-danger"> Confirmar Baja</button>
                     <a href="adminDestinos.php" class="btn btn-outline-secondary">
                         Volver a panel de regiones
                     </a>
-
 
             </form>
         </div> 

@@ -34,7 +34,7 @@
         	$datos = $stmt->fetch(); //Devuelve solo 1 dato
         	$this->setDestID($datos['destID']);
         	$this->setDestNombre($datos['destNombre']);
-			self::setRegNombre($datos['regNombre']);
+			//self::setRegNombre($datos['regNombre']);
 			$this->setRegID($datos['regID']);
 			$this->setDestPrecio($datos['destPrecio']);
 			$this->setDestAsientos($datos['destAsientos']);
